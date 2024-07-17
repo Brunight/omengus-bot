@@ -137,3 +137,6 @@ dist
 
 # Docker
 docker-compose.override.yml
+
+
+dev.db

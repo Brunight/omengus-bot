@@ -103,7 +103,8 @@ const trackStartedEmbed = ({ track, player, title = 'Now playing' } = {}) => {
 	} else {
 		// !TODO: finish this
 		embed.setTitle("No song currently playing").setImage(
-			"https://cdn.discordapp.com/avatars/788006279837909032/e4cf889f9fe19f9b4dd5301d51bddcb2.webp?size=4096"
+			// "https://cdn.discordapp.com/avatars/788006279837909032/e4cf889f9fe19f9b4dd5301d51bddcb2.webp?size=4096"
+			"https://raw.githubusercontent.com/Brunight/youtube-dl-electron/master/src/assets/default-cover.jpg"
 		);
 	}
 

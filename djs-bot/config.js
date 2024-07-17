@@ -6,7 +6,7 @@ module.exports = {
 	/**
 	 * Name of the bot 
 	 * @type {string} */
-	name: "InsertNameHereBot",
+	name: "Omengus Bot",
 	/**
 	 * Database option (mongodb, postgresql) https://www.prisma.io/docs/reference/database-reference/connection-urls
 	 * @type {string} */
@@ -43,7 +43,7 @@ module.exports = {
 		/**
 		 * Port to run the API on
 		 * @type {number} */
-		port: parseInt(process.env.API_PORT) || 8080,
+		port: parseInt(process.env.API_PORT) || 3000,
 	},
 
 	/**
@@ -53,7 +53,7 @@ module.exports = {
 		/**
 		 * Port to run WS on
 		 * @type {number} */
-		port: parseInt(process.env.WS_PORT) || 3000,
+		port: parseInt(process.env.WS_PORT) || 8080,
 	},
 
 	/**
@@ -71,22 +71,28 @@ module.exports = {
 	 * Nodes to connect to
 	 * @type {import("erela.js").Node[]} */
 	nodes: [
+		...(process.env.CUSTOM_LAVALINK_HOST &&
+		process.env.CUSTOM_LAVALINK_PORT &&
+		process.env.CUSTOM_LAVALINK_PASS
+			? [
+					{
+						identifier: "custom",
+						host: process.env.CUSTOM_LAVALINK_HOST,
+						port: parseInt(process.env.CUSTOM_LAVALINK_PORT),
+						password: process.env.CUSTOM_LAVALINK_PASS,
+						retryAmount: 999999, // for lavalink connection attempts
+						retryDelay: 60, // Delay between reconnect attempts if connection is lost.
+						secure: false, // if lavalink is running SSL
+					},
+			  ]
+			: []),
 		{
-			identifier: "DockerNode", // log id string
-			host: "docker.lavalink",
-			port: 2333,
-			password: "youshallnotpass",
-			retryAmount: 15, // for lavalink connection attempts
-			retryDelay: 6000, // Delay between reconnect attempts if connection is lost.
-			secure: false, // if lavalink is running SSL
-		},
-		{
-			identifier: "LocalNode", // log id string
-			host: "localhost",
-			port: 2333,
-			password: "youshallnotpass",
-			retryAmount: 15, // for lavalink connection attempts
-			retryDelay: 6000, // Delay between reconnect attempts if connection is lost.
+			identifier: "lava-v3.ajieblogs.eu.org", // log id string
+			host: "lava-v3.ajieblogs.eu.org",
+			port: 80,
+			password: "https://dsc.gg/ajidevserver",
+			retryAmount: 999999, // for lavalink connection attempts
+			retryDelay: 60, // Delay between reconnect attempts if connection is lost.
 			secure: false, // if lavalink is running SSL
 		},
 	],
@@ -121,7 +127,7 @@ module.exports = {
 	 * 
 	 * 0 = No debug logging (production), 1 = Standard Logging (debug info), 2 = Development (everything)
 	 * @type {number} */
-	OPLevel: 1,
+	OPLevel: 2,
 
 	/**
 	 * Color of the embeds (can also be hex)
@@ -146,16 +152,7 @@ module.exports = {
 		 */
 		activities: [
 			{
-				name: "{someVariable} servers",
-				type: "WATCHING",
-				data: (client) => {
-					return {
-						someVariable: client.guilds.cache.size,
-					}
-				}
-			},
-			{
-				name: "Music",
+				name: "Musga 👁️👄👁️",
 				type: "LISTENING",
 			}
 		],
@@ -168,7 +165,7 @@ module.exports = {
 
 	defaultPlayerValues: {
 		twentyFourSeven: false,
-		autoLeave: false,
+		autoLeave: true,
 		autoPause: true,
 		autoQueue: false,
 		history: false,

@@ -176,6 +176,8 @@ const preventInteraction = async (interaction) => {
 	if (!controlChannelMessage || controlChannelMessage.channelId !== interaction.channelId)
 		return;
 
+	if (interaction.commandName === "play") return;
+
 	return interaction.reply({
 		embeds: [
 			redEmbed({

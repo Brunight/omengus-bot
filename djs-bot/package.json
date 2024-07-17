@@ -8,10 +8,11 @@
 		"deploy": "npm run api-build && node scripts/global",
 		"destroy": "node scripts/destroy",
 		"update": "node scripts/update",
-		"bot": "npm run api-build && node index.js",
+		"bot": "npm run api-build && node bot.js",
+		"lite": "npm run api-build && node index.js",
 		"start": "npm ci && npm run bot",
 		"db-start": "npm ci && node scripts/DBScript.js && npm run bot",
-		"api-build": "tsc -p api/v1/tsconfig.json",
+		"api-build": "tsup --config api/v1/tsup.config.ts",
 		"api-start": "node api/v1/dist/standalone.js"
 	},
 	"keywords": [
@@ -60,6 +61,7 @@
 		"@tsconfig/node16": "^16.1.1",
 		"@types/jsonwebtoken": "^9.0.5",
 		"@types/node": "^20.11.17",
+		"tsup": "^7.2.0",
 		"typescript": "^5.3.3"
 	}
 }
