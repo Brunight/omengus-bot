@@ -87,6 +87,15 @@ module.exports = {
 			  ]
 			: []),
 		{
+			identifier: "lavalink.jirayu.net", // log id string
+			host: "lavalink.jirayu.net",
+			port: 2334,
+			password: "youshallnotpass",
+			retryAmount: 999999, // for lavalink connection attempts
+			retryDelay: 60, // Delay between reconnect attempts if connection is lost.
+			secure: false, // if lavalink is running SSL
+		},
+		{
 			identifier: "lava-v3.ajieblogs.eu.org", // log id string
 			host: "lava-v3.ajieblogs.eu.org",
 			port: 80,
